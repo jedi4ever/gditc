@@ -108,8 +108,8 @@ password:
 # TODO: other rdp clients might solve this
 
 rdp:
-	echo "auto connect:i:1" > vm.rdp
-	echo "full address:s:$(shell cat tmp/ip)" >> vm.rdp
-	echo "username:s:Administrator" >> vm.rdp
+	echo "auto connect:i:1" > tmp/vm.rdp
+	echo "full address:s:$(shell cat tmp/ip)" >> tmp/vm.rdp
+	echo "username:s:Administrator" >> tmp/vm.rdp
 	cat tmp/password | tr -d '\n' | pbcopy
-	open vm.rdp
+	open tmp/vm.rdp
