@@ -50,3 +50,14 @@ I owe the following repos deeply:
 - current we activate winrm in user_data
 - then transfer files to the instance using winrm to enable ssh
 - then we continue using ssh to execute scripts in powershell
+
+### Software
+
+- Remote access: Win RM , SSH , RDP , Parsec (looking into moonlight & vnc)
+- Display : NVIDIA Drivers
+- Audio: Razer (looking into Virtual Cable)
+- USB: Vigembus (looking into Virtual Here, Flexihub)
+- Gamepad: Xbox compatible over Parsec
+- VPN: (looking into ZeroTier)
+- Game play: Steam , Battlenet, Epic Games
+- Apps : (looking into Skype, OBS , Unreal Engine)
