@@ -74,6 +74,25 @@ hello: ip trust sync
 # Provision all steps
 # TODO: make this more granular
 # Make it stop on error
+
+unreal:
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\chocolatey.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\7zip-install.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\ie-security.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\googlechrome.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\nvidia.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\nvidia-faceworks-demo.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\aws-desktop-cleanup.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\aws-tools.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\aws-cli.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\nice-dcv.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\set-time-timezone.ps1'
+	# Restart to get the video driver good
+	ssh -t Administrator@$(shell cat tmp/ip) 'shutdown /r /t 10 /d p:4:1 /c \"gamer Restart\"'
+
+test:
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\pixelstreaming.ps1'
+
 provision:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\chocolatey.ps1'
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\7zip-install.ps1'
@@ -113,3 +132,13 @@ rdp:
 	echo "username:s:Administrator" >> tmp/vm.rdp
 	cat tmp/password | tr -d '\n' | pbcopy
 	open tmp/vm.rdp
+
+# https://github.com/awsdocs/nice-dcv-user-guide/blob/master/doc_source/using-connection-file.md#connection-file-params
+dcv:
+	echo "[version]" > tmp/vm.dcv
+	echo "format=1.0" >> tmp/vm.dcv
+	echo "[connect]" >> tmp/vm.dcv
+	echo "host=$(shell cat tmp/ip)" >> tmp/vm.dcv
+	echo "user=Administrator" >> tmp/vm.dcv
+	echo "password=$(shell cat tmp/password | tr -d '\n')" >> tmp/vm.dcv
+	/Applications/DCV\ Viewer.app/Contents/MacOS/dcvviewer tmp/vm.dcv >/dev/null

@@ -55,6 +55,10 @@ Older:
 - <https://github.com/putty182/gcloudrig>
 - <https://github.com/aykamko/parsec-google-cloud-gaming>
 
+### Unreal
+- <https://github.com/aws-samples/deploying-unreal-engine-pixel-streaming-server-on-ec2>
+- <https://github.com/jmarymee/Unreal-Pixel-Streaming-on-Azure/tree/main/iac>
+
 ## Technical Notes
 
 ### Terraform
@@ -82,7 +86,7 @@ Older:
 - Remote access: Win RM , SSH , RDP , Parsec (looking into moonlight & vnc)
 - Display : NVIDIA Drivers
 - Audio: Razer (looking into Virtual Cable)
-- USB: Vigembus (looking into Virtual Here, Flexihub)
+- USB: Vigembus (looking into Virtual Here, Flexihub), windows Redirect FX
 - Gamepad: Xbox compatible over Parsec
 - VPN: (looking into ZeroTier)
 - Game play: Steam , Battlenet, Epic Games

@@ -107,3 +107,14 @@ resource "aws_security_group_rule" "virtual_desktop_tcp_ingress" {
   cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
+
+# NICE DCV
+resource "aws_security_group_rule" "nice_dcv_tcp_ingress" {
+  type              = "ingress"
+  description       = "Allow Nice DCV port"
+  from_port         = 8443
+  to_port           = 8443
+  protocol          = "tcp"
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
+  security_group_id = aws_security_group.default.id
+}

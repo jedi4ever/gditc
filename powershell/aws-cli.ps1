@@ -1,0 +1,3 @@
+
+
+choco install aws-cli
