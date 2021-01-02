@@ -18,7 +18,7 @@ resource "aws_security_group_rule" "rdp_ingress" {
   from_port         = 3389
   to_port           = 3389
   protocol          = "tcp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
 
@@ -29,7 +29,7 @@ resource "aws_security_group_rule" "winrm_ingress" {
   from_port         = 5985
   to_port           = 5986
   protocol          = "tcp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
 
@@ -40,7 +40,7 @@ resource "aws_security_group_rule" "ssh_ingress" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
 
@@ -51,7 +51,7 @@ resource "aws_security_group_rule" "vnc_ingress" {
   from_port         = 5900
   to_port           = 5900
   protocol          = "tcp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
 
@@ -62,7 +62,7 @@ resource "aws_security_group_rule" "parsec_ingress" {
   from_port         = 8000
   to_port           = 8040
   protocol          = "udp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
 
@@ -83,7 +83,7 @@ resource "aws_security_group_rule" "steam_stream_udp_ingress" {
   from_port         = 27031
   to_port           = 27036
   protocol          = "udp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
 
@@ -93,7 +93,7 @@ resource "aws_security_group_rule" "steam_stream_tcp_ingress" {
   from_port         = 27036
   to_port           = 27037
   protocol          = "tcp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }
 
@@ -104,6 +104,6 @@ resource "aws_security_group_rule" "virtual_desktop_tcp_ingress" {
   from_port         = 38810
   to_port           = 38840
   protocol          = "tcp"
-  cidr_blocks       = ["${data.external.local_ip.result.address}/32"]
+  cidr_blocks       = ["${data.external.local_ip.result.ip}/32"]
   security_group_id = aws_security_group.default.id
 }

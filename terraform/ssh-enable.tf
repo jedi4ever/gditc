@@ -17,9 +17,9 @@ resource "null_resource" "prepare_ssh" {
     https    = false
     insecure = true
     user     = "Administrator"
-    password = "${rsadecrypt(aws_spot_instance_request.windows_instance.password_data, "${tls_private_key.example.private_key_pem}")}"
+    password = rsadecrypt(aws_spot_instance_request.windows_instance.password_data, "${tls_private_key.example.private_key_pem}")
 
-    host = "${aws_spot_instance_request.windows_instance.public_ip}"
+    host = aws_spot_instance_request.windows_instance.public_ip
     port = "5985"
   }
 

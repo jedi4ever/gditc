@@ -1,4 +1,4 @@
-EXEC=
+EXEC=${VAULT_EXEC}
 TF_DIR=terraform
 
 # Create the project dirs

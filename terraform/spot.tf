@@ -15,7 +15,7 @@ resource "aws_spot_instance_request" "windows_instance" {
   wait_for_fulfillment = true
 
   get_password_data = true
-  key_name          = "${var.key_name}"
+  key_name          = var.key_name
 
   # EBS configuration
   ebs_optimized = true
