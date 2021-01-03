@@ -1,0 +1,8 @@
+[Setup]
+Lang=english
+Dir=C:\Program Files\NewTek\NDI 4 Tools
+Group=NDI 4 Tools
+NoIcons=0
+SetupType=all_tools
+Components=access_manager,adobe_cc,adobe_cc\framebuffer_plugin,adobe_cc\fileio_plugin,screen_capture,screen_capture\general,screen_capture\hx,studio_monitor,test_patterns,webcam_input,vlc_plugin,ndi_hx,video_codecs
+Tasks=

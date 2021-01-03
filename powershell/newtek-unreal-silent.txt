@@ -1,0 +1,8 @@
+[Setup]
+Lang=english
+Dir=C:\Program Files\NewTek\NDI SDK for Unreal Engine
+Group=NDI SDK for Unreal Engine
+NoIcons=0
+SetupType=full
+Components=
+Tasks=

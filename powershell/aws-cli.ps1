@@ -1,3 +1,3 @@
 
 
-choco install aws-cli
+choco install awscli

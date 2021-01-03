@@ -61,6 +61,10 @@ trust:
 # Transfers your powershell script to the vm
 sync: ip
 	scp -r powershell/*.ps1 Administrator@$(shell cat tmp/ip):/scripts/
+	scp -r powershell/*.txt Administrator@$(shell cat tmp/ip):/scripts/
+	scp -r powershell/*.au3 Administrator@$(shell cat tmp/ip):/scripts/
+	scp -r powershell/*.bat Administrator@$(shell cat tmp/ip):/scripts/
+
 
 # WIP: use rsync instead of sync to make it faster
 # TODO: figure out to get rsync working on the windows side
@@ -75,7 +79,7 @@ hello: ip trust sync
 # TODO: make this more granular
 # Make it stop on error
 
-unreal:
+basis:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\chocolatey.ps1'
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\7zip-install.ps1'
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\ie-security.ps1'
@@ -90,8 +94,21 @@ unreal:
 	# Restart to get the video driver good
 	ssh -t Administrator@$(shell cat tmp/ip) 'shutdown /r /t 10 /d p:4:1 /c \"gamer Restart\"'
 
+reboot:
+	ssh -t Administrator@$(shell cat tmp/ip) 'shutdown /r /t 10 /d p:4:1 /c \"gamer Restart\"'
+
 test:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\pixelstreaming.ps1'
+
+obs: 
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\obs.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\autoit.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\unix.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\aws-vault.ps1'
+	# needs reboot
+
+ndi:
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\newtek-unreal-ndi.ps1'
 
 provision:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\chocolatey.ps1'
