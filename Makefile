@@ -79,7 +79,7 @@ hello: ip trust sync
 # TODO: make this more granular
 # Make it stop on error
 
-basis:
+base:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\chocolatey.ps1'
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\7zip-install.ps1'
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\ie-security.ps1'
@@ -92,12 +92,12 @@ basis:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\nice-dcv.ps1'
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\set-time-timezone.ps1'
 	# Restart to get the video driver good
-	ssh -t Administrator@$(shell cat tmp/ip) 'shutdown /r /t 10 /d p:4:1 /c \"gamer Restart\"'
+	#ssh -t Administrator@$(shell cat tmp/ip) 'shutdown /r /t 10 /d p:4:1 /c \"gamer Restart\"'
 
 reboot:
 	ssh -t Administrator@$(shell cat tmp/ip) 'shutdown /r /t 10 /d p:4:1 /c \"gamer Restart\"'
 
-test:
+pixel:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\pixelstreaming.ps1'
 
 obs: 
@@ -109,6 +109,10 @@ obs:
 
 ndi:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\newtek-unreal-ndi.ps1'
+
+zoom: base obs ndi pixel
+	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\zoom.ps1'
+	ssh -t Administrator@$(shell cat tmp/ip) 'shutdown /r /t 10 /d p:4:1 /c \"gamer Restart\"'
 
 provision:
 	ssh -t Administrator@$(shell cat tmp/ip) 'powershell -File C:\scripts\chocolatey.ps1'
